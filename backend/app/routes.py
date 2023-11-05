@@ -7,8 +7,9 @@ main = Blueprint('main', __name__)
 
 @main.route('/generate-sheet', methods=['POST'])
 def generate_sheet():
+    current_app.logger.info('generate_sheet called')  # Log statement
     creds = service_account.Credentials.from_service_account_file(
-            'path/to/credentials.json')
+            'app/credentials.json')
     drive_service = build('drive', 'v3', credentials=creds)
 
     # Use your actual template file ID

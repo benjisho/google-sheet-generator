@@ -33,7 +33,8 @@ google-sheet-generator/
 │   ├── config.py
 │   ├── requirements.txt
 │   ├── Dockerfile
-│   └── manage.py
+│   ├── manage.py
+│   └── credentials.json
 ├── frontend/
 │   ├── public/
 │   ├── src/
@@ -46,7 +47,6 @@ google-sheet-generator/
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
-
 ```
 
 ## Setup Instructions
