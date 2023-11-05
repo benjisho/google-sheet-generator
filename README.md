@@ -67,6 +67,13 @@ docker-compose up --build
 1. Open a web browser and navigate to http://localhost:3000 to access the application.
 2. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
 
+## To Test Backend Endpoint Manually
+
+If possible, test the `/generate-sheet`` route manually using a tool like curl or Postman to see if you can reproduce the error and get more information about what might be causing it.
+```bash
+curl -X POST http://localhost:5000/generate-sheet
+```
+
 ## Contributing
 Contributions are welcome! Please read the contributing guidelines before getting started.
 
