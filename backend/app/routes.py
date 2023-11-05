@@ -1,5 +1,5 @@
 # backend/app/routes.py
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, current_app
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 
@@ -24,4 +24,5 @@ def generate_sheet():
         ).execute()
         return jsonify({'spreadsheetId': result.get('id')}), 200
     except Exception as e:
+        current_app.logger.error('An error occurred: %s', e, exc_info=True)
         return jsonify({'error': str(e)}), 500
