@@ -1,9 +1,12 @@
 // frontend/src/components/Button.js
 import React from 'react';
+import './Button.css';  // Import the new CSS file
 
-const Button = ({ onClick, label }) => {
+const Button = ({ label, onClick }) => {
     return (
-        <button onClick={onClick}>{label}</button>
+        <button className="button" onClick={onClick}>
+            {label}
+        </button>
     );
 };
 

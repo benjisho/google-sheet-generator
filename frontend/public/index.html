@@ -7,34 +7,34 @@
     <title>Work Attendance Sheet Generator</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Custom CSS -->
     <style>
         body {
             padding-top: 5rem;
-            background-color: #f8f9fa;
+            background-color: #343a40; /* Dark background color */
+            color: #ffffff; /* White text color */
         }
         .starter-template {
             padding: 3rem 1.5rem;
             text-align: center;
         }
         nav.navbar {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #444;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #343a40; /* Dark navbar */
         }
-        button.btn {
-            background-color: #008cba;
-            border-color: #0079a1;
-            color: #fff;
-            transition: background-color 0.3s ease;
-        }
-        button.btn:hover {
-            background-color: #006f8a;
+        nav.navbar a.navbar-brand {
+            color: #ffffff; /* White text color */
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #ffffff;">
-        <a class="navbar-brand" href="#">Work Attendance Sheet Generator</a>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-calendar-alt"></i> Work Attendance Sheet Generator
+        </a>
     </nav>
 
     <main role="main" class="container">

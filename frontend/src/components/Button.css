@@ -1,0 +1,22 @@
+/* frontend/src/components/Button.css */
+
+.button {
+    background-color: rgb(10, 78, 109); /* Teal background color */
+    border-color: #0e4c87;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 50px; /* Rounded corners */
+    padding: 10px 20px; /* Increased padding */
+    font-size: 1.2rem; /* Larger font size */
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Shadow for 3D effect */
+}
+
+.button:hover {
+    background-color: #17a2b8; /* Slightly darker teal on hover */
+    border-color: #17a2b8;
+}
+
+.button:active {
+    transform: scale(0.95); /* Shrinks the button slightly when clicked */
+}

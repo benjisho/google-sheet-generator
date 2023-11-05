@@ -8,7 +8,7 @@ const App = () => {
 
     const handleButtonClick = async () => {
         try {
-            const response = await axios.post('http://95.179.202.222:5000/generate-sheet');  // Update this line
+            const response = await axios.post('http://45.32.181.120:5000/generate-sheet');  // Update this line
             const spreadsheetId = response.data.spreadsheetId;
             const link = `https://docs.google.com/spreadsheets/d/${spreadsheetId}`;
             setSpreadsheetLink(link);

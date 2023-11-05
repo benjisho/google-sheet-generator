@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, origins=['http://95.179.202.222:3000'])  # Update this line
+    CORS(app, origins=['http://45.32.181.120:3000'])  # Update this line
 
     # Set up basic logging configuration
     logging.basicConfig(level=logging.DEBUG)
