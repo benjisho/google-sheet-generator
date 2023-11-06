@@ -69,8 +69,9 @@ docker-compose up --build
 
 ## Usage Instructions
 
-1. Open a web browser and navigate to http://localhost:3000 to access the application.
-2. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
+1. Add your (GCP service-account)[https://console.cloud.google.com/iam-admin/serviceaccounts] credentials into this file: `credentials.json`
+2.  Open a web browser and navigate to http://localhost:3000 to access the application.
+3. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
 
 ## To Test Backend Endpoint Manually
 
@@ -79,6 +80,11 @@ If possible, test the `/generate-sheet`` route manually using a tool like curl o
 curl -X POST http://localhost:5000/generate-sheet
 ```
 
+## Delete the environment we deployed
+
+```bash
+docker system prune -a
+```
 ## Contributing
 Contributions are welcome! Please read the contributing guidelines before getting started.
 
