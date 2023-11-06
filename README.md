@@ -26,8 +26,10 @@ google-sheet-generator/
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py
-│   │   ├── routes.py
+│   │   ├── cleanup_sheets_from_api.py
+│   │   ├── credentials.json
 │   │   ├── models.py
+│   │   ├── routes.py
 │   │   └── templates/
 │   ├── tests/
 │   ├── config.py
@@ -37,8 +39,11 @@ google-sheet-generator/
 │   └── credentials.json
 ├── frontend/
 │   ├── public/
+│   │   └── index.html
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── Button.css
+│   │   │   └── Button.js
 │   │   ├── App.js
 │   │   └── index.js
 │   ├── package.json
