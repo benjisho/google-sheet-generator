@@ -69,7 +69,7 @@ docker-compose up --build
 
 ## Usage Instructions
 
-1. Add your (GCP service-account)[https://console.cloud.google.com/iam-admin/serviceaccounts] credentials into this file: `credentials.json`
+1. Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
 2.  Open a web browser and navigate to http://localhost:3000 to access the application.
 3. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
 
