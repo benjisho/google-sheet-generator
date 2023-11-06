@@ -6,7 +6,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 def create_app():
     app = Flask(__name__)
-    CORS(app, resources={r"/generate-sheet": {"origins": "http://45.32.181.120:3000"}})
+    CORS(app, resources={r"/generate-sheet": {"origins": "http://95.179.193.18:3000"}})
 
     # Set up basic logging configuration
     logging.basicConfig(level=logging.DEBUG)

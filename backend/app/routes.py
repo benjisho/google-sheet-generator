@@ -1,23 +1,32 @@
 # backend/app/routes.py
+import subprocess  # Import the subprocess module
 from flask import Blueprint, jsonify, current_app
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from googleapiclient.errors import HttpError
 from datetime import datetime, timedelta
 
-main = Blueprint('main', __name__) # initialize Blueprint object with name 'main' 
+main = Blueprint('main', __name__)  # initialize Blueprint object with name 'main'
 
-def delete_sheet(file_id):
+last_creation_time = None  # Global variable to store the last creation timestamp
+
+def run_cleanup_script():
     try:
-        creds = service_account.Credentials.from_service_account_file('app/credentials.json') # Your credentials file path
-        drive_service = build('drive', 'v3', credentials=creds) # Build the service object
-        drive_service.files().delete(fileId=file_id).execute() # Delete the file by ID
-        current_app.logger.info(f'Deleted file with ID {file_id}') # Log statement with file ID
-    except Exception as e:
-        current_app.logger.error(f'An error occurred: {e}') # Log statement with error
+        subprocess.run(['python3', 'app/cleanup_sheets_from_api.py'], check=True)  # Run the cleanup script
+        current_app.logger.info('Cleanup script executed successfully')
+    except subprocess.CalledProcessError as e:
+        current_app.logger.error(f'An error occurred while executing the cleanup script: {e}')
 
-@main.route('/generate-sheet', methods=['POST']) 
-def generate_sheet(): 
+@main.route('/generate-sheet', methods=['POST'])
+def generate_sheet():
+    global last_creation_time  # Declare the global variable
+    current_time = datetime.utcnow()  # Get the current time
+    
+    # Check if the last creation time is within the specified timeframe (e.g., 10 minutes)
+    if last_creation_time and (current_time - last_creation_time).total_seconds() < 600:
+        return jsonify({'error': 'A sheet was already created within the last 10 minutes. Please try again later.'}), 429
+    
+    last_creation_time = current_time  # Update the last creation time
     current_app.logger.info('generate_sheet called')  # Log statement
     creds = service_account.Credentials.from_service_account_file(
             'app/credentials.json') # Your credentials file path
@@ -48,10 +57,10 @@ def generate_sheet():
             body=permission,
             fields='id',
         ).execute() 
- 
-        # Schedule the deletion of the sheet
-        scheduler = current_app.config['SCHEDULER'] # Get the scheduler from the app config 
-        scheduler.add_job(delete_sheet, 'date', run_date=datetime.utcnow() + timedelta(hours=1), args=[file_id]) # Schedule the deletion of the sheet in 1 hour 
+
+        # Schedule the execution of the cleanup script
+        scheduler = current_app.config['SCHEDULER']  # Get the scheduler from the app config
+        scheduler.add_job(run_cleanup_script, 'date', run_date=datetime.utcnow() + timedelta(hours=1))  # Schedule the execution of the cleanup script in 1 hour
 
         # Construct the URL
         spreadsheet_url = f'https://docs.google.com/spreadsheets/d/{file_id}'

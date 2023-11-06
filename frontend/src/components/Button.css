@@ -1,6 +1,6 @@
 /* frontend/src/components/Button.css */
 
-.button {
+button {
     background-color: rgb(10, 78, 109); /* Teal background color */
     border-color: #0e4c87;
     color: #fff;
@@ -12,11 +12,68 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.1); /* Shadow for 3D effect */
 }
 
-.button:hover {
+button:hover {
     background-color: #17a2b8; /* Slightly darker teal on hover */
     border-color: #17a2b8;
 }
 
-.button:active {
+button:active {
     transform: scale(0.95); /* Shrinks the button slightly when clicked */
+}
+
+button:focus {
+    outline: none; /* Removes the default focus state */
+}
+
+button:disabled {
+    cursor: default; /* Prevents the cursor from changing to pointer on hover */
+    opacity: 0.5; /* Dim the button slightly */
+}
+
+/* If the button is a link, remove the default underline decoration */
+button:link,
+button:visited,
+button:active,
+button:hover,
+button:focus,
+button:disabled {
+    text-decoration: none;
+}
+
+/* If the button is a link, make it look like a button */
+button:link,
+button:visited {
+    display: inline-block;
+}
+
+/* ARIA button role */
+button[role="button"] {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: rgb(10, 78, 109);
+    border-color: #0e4c87;
+    border-radius: 50px;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+button[role="button"]:hover {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+button[role="button"]:active {
+    transform: scale(0.95);
+}
+
+button[role="button"]:focus {
+    outline: none;
+}
+
+button[role="button"]:disabled {
+    cursor: default;
+    opacity: 0.5;
 }
