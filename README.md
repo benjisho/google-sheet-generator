@@ -107,8 +107,6 @@ docker-compose up --build
 > Please replace `<your-domain-or-IP>` with your actual domain name or IP address where the application is hosted. Also, make sure to follow best practices and keep your SSL certificates secure.
 
 
-
-
 ## To Test Backend Endpoint Manually
 
 If possible, test the `/generate-sheet`` route manually using a tool like curl or Postman to see if you can reproduce the error and get more information about what might be causing it.
