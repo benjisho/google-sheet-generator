@@ -97,7 +97,7 @@ docker-compose up --build
 
 ## Usage Instructions
 
-2. Open a web browser and navigate to https://<your-address> to access the application.
+2. Open a web browser and navigate to `https://"your-address"` to access the application.
 3. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
 
 ## To Test Backend Endpoint Manually
