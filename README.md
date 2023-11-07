@@ -4,18 +4,23 @@ This project provides a web application to generate work attendance sheets as Go
 
 ## Table of Contents
 
+## Table of Contents
+
 1. [Technologies Used](#technologies-used)
 2. [File Structure](#file-structure)
 3. [Setup Instructions](#setup-instructions)
 4. [Usage Instructions](#usage-instructions)
-5. [Contributing](#contributing)
-6. [License](#license)
+5. [Nginx and SSL Configuration](#nginx-and-ssl-configuration)
+6. [Contributing](#contributing)
+7. [License](#license)
 
 ## Technologies Used
 
 - Backend: Flask
 - Frontend: React
 - Containerization: Docker
+- Reverse Proxy: Nginx
+- SSL/TLS: OpenSSL
 - Google Sheets API
 - Google OAuth 2.0
 
@@ -90,15 +95,19 @@ openssl x509 -req -days 365 -in nginx/certs/server.csr -signkey nginx/certs/serv
 vi backend/app/credentials.json
 ```
 
-4s. Build and run the Docker containers:
+4. Build and run the Docker containers:
 ```bash
 docker-compose up --build
 ```
 
 ## Usage Instructions
 
-2. Open a web browser and navigate to `https://"your-address"` to access the application.
-3. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
+2. Open a web browser and navigate to `https://<your-domain-or-IP>` to access the application.
+
+> Please replace `<your-domain-or-IP>` with your actual domain name or IP address where the application is hosted. Also, make sure to follow best practices and keep your SSL certificates secure.
+
+
+
 
 ## To Test Backend Endpoint Manually
 
