@@ -35,8 +35,7 @@ google-sheet-generator/
 │   ├── config.py
 │   ├── requirements.txt
 │   ├── Dockerfile
-│   ├── manage.py
-│   └── credentials.json
+│   └── manage.py
 ├── frontend/
 │   ├── public/
 │   │   └── index.html
@@ -49,6 +48,12 @@ google-sheet-generator/
 │   ├── package.json
 │   ├── Dockerfile
 │   └── .env
+├── nginx/
+│   ├── nginx.conf
+│   ├── certs/
+│   │   ├── server.crt
+│   │   └── server.key
+│   └── Dockerfile
 ├── docker-compose.yml
 ├── README.md
 └── .gitignore
@@ -62,15 +67,37 @@ git clone https://github.com/benjisho/google-sheet-generator.git
 cd google-sheet-generator
 ```
 
-2. Build and run the Docker containers:
+2. Generate SSL certyificate into `nginx/certs/` directory
+
+Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
+
+```
+openssl genrsa -out nginx/certs/server.key 2048
+```
+Run the following command to generate a certificate, using the private key from the previous step.
+```
+openssl req -new -key cnginx/erts/server.key -out nginx/certs/server.csr
+```
+
+Run the following command to self-sign the certificate with the private key, for a period of validity of 365 days:
+```
+openssl x509 -req -days 365 -in nginx/certs/server.csr -signkey nginx/certs/server.key -out nginx/certs/server.crt
+```
+
+3. Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
+
+```bash
+vi backend/app/credentials.json
+```
+
+4s. Build and run the Docker containers:
 ```bash
 docker-compose up --build
 ```
 
 ## Usage Instructions
 
-1. Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
-2.  Open a web browser and navigate to http://localhost:3000 to access the application.
+2. Open a web browser and navigate to https://<your-address> to access the application.
 3. Follow the on-screen instructions to authenticate with Google and generate a work attendance sheet.
 
 ## To Test Backend Endpoint Manually
@@ -85,6 +112,7 @@ curl -X POST http://localhost:5000/generate-sheet
 ```bash
 docker system prune -a
 ```
+
 ## Contributing
 Contributions are welcome! Please read the contributing guidelines before getting started.
 
