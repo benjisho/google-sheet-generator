@@ -81,7 +81,7 @@ openssl genrsa -out nginx/certs/server.key 2048
 ```
 Run the following command to generate a certificate, using the private key from the previous step.
 ```
-openssl req -new -key cnginx/erts/server.key -out nginx/certs/server.csr
+openssl req -new -key nginx/certs/server.key -out nginx/certs/server.csr
 ```
 
 Run the following command to self-sign the certificate with the private key, for a period of validity of 365 days:
