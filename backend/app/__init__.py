@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 def create_app():
     app = Flask(__name__)
     # Adjust the origins to allow requests from the specific frontend origin
-    CORS(app, resources={r"/generate-sheet": {"origins": "http://.*:3000"}})
+    CORS(app, resources={r"/*": {"origins": "*"}})
 
     # Set up basic logging configuration
     logging.basicConfig(level=logging.DEBUG)
