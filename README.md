@@ -10,7 +10,7 @@ This project provides a web application to generate work attendance sheets as Go
     3.1. [Clone the repository](#clone-the-repository)
 4. [Nginx and SSL Configuration](#nginx-and-ssl-configuration)
     
-    4.1. [Generate SSL certificate](#generate-ssl-certificate-into-nginxcerts-directory)
+    4.1. [Generate SSL certificate](#generate-ssl-certiificate-into-`nginx/certs/`-directory)
     
     4.2. [Add GCP Credentials](#add-gcp-credentials)
     
@@ -83,8 +83,8 @@ git clone https://github.com/benjisho/google-sheet-generator.git
 cd google-sheet-generator
 ```
 
-## Nginx and SSL Configuration
-### Generate SSL certiificate into `nginx/certs/` directory
+### Nginx and SSL Configuration
+#### Generate SSL certiificate into `nginx/certs/` directory
 
 1. Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
 
@@ -101,12 +101,12 @@ openssl req -new -key nginx/certs/server.key -out nginx/certs/server.csr
 openssl x509 -req -days 365 -in nginx/certs/server.csr -signkey nginx/certs/server.key -out nginx/certs/server.crt
 ```
 
-3. Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
-
+#### Add GCP Credentials
+Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
 ```bash
 vi backend/app/credentials.json
 ```
-
+#### Build and Run Docker Containers
 4. Build and run the Docker containers:
 ```bash
 docker-compose up --build
