@@ -85,9 +85,7 @@ cd google-sheet-generator
 
 ### Nginx and SSL Configuration
 #### Generate SSL certiificate into `nginx/certs/` directory
-
 1. Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
-
 ```
 openssl genrsa -out nginx/certs/server.key 2048
 ```
@@ -100,20 +98,18 @@ openssl req -new -key nginx/certs/server.key -out nginx/certs/server.csr
 ```
 openssl x509 -req -days 365 -in nginx/certs/server.csr -signkey nginx/certs/server.key -out nginx/certs/server.crt
 ```
-
 #### Add GCP Credentials
-Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
+4. Add your [GCP service-account](https://console.cloud.google.com/iam-admin/serviceaccounts) credentials into this file: `credentials.json`
 ```bash
 vi backend/app/credentials.json
 ```
 #### Build and Run Docker Containers
-4. Build and run the Docker containers:
+5. Build and run the Docker containers:
 ```bash
 docker-compose up --build
 ```
 
 ## Usage Instructions
-
 2. Open a web browser and navigate to `https://<your-domain-or-IP>` to access the application.
 
 > Please replace `<your-domain-or-IP>` with your actual domain name or IP address where the application is hosted. Also, make sure to follow best practices and keep your SSL certificates secure.
