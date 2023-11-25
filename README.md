@@ -66,25 +66,25 @@ google-sheet-generator/
 
 ## Setup Instructions
 
-1. Clone the repository:
+### Clone the repository:
 ```bash
 git clone https://github.com/benjisho/google-sheet-generator.git
 cd google-sheet-generator
 ```
 
-2. Generate SSL certyificate into `nginx/certs/` directory
+### Generate SSL certyificate into `nginx/certs/` directory
 
-Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
+1. Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
 
 ```
 openssl genrsa -out nginx/certs/server.key 2048
 ```
-Run the following command to generate a certificate, using the private key from the previous step.
+2. Run the following command to generate a certificate, using the private key from the previous step.
 ```
 openssl req -new -key nginx/certs/server.key -out nginx/certs/server.csr
 ```
 
-Run the following command to self-sign the certificate with the private key, for a period of validity of 365 days:
+3. Run the following command to self-sign the certificate with the private key, for a period of validity of 365 days:
 ```
 openssl x509 -req -days 365 -in nginx/certs/server.csr -signkey nginx/certs/server.key -out nginx/certs/server.crt
 ```
