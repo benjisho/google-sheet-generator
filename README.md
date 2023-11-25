@@ -10,12 +10,13 @@ This project provides a web application to generate work attendance sheets as Go
 2. [File Structure](#file-structure)
 3. [Setup Instructions](#setup-instructions)
 4. [Usage Instructions](#usage-instructions)
+    - [Test Backend Endpoint Manually](#test-backend-endpoint-manually)
+    - [Delete Deployed Environment](#delete-deployed-environment)
 5. [Nginx and SSL Configuration](#nginx-and-ssl-configuration)
 6. [Contributing](#contributing)
 7. [License](#license)
 
 ## Technologies Used
-
 - Backend: Flask
 - Frontend: React
 - Containerization: Docker
@@ -72,6 +73,7 @@ git clone https://github.com/benjisho/google-sheet-generator.git
 cd google-sheet-generator
 ```
 
+## Nginx and SSL Configuration
 ### Generate SSL certyificate into `nginx/certs/` directory
 
 1. Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
