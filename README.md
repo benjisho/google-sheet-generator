@@ -131,20 +131,20 @@ docker system prune -a
 ### Delete the generated Sheets by the clients
 
 1. Create and Activate a Virtual Environment (if not already done):
-        1.1. Create a virtual environment:
+- Create a virtual environment:
 ```bash
 python3 -m venv ~/venv
 ```
-        1.2. Activate the virtual environment:
+- Activate the virtual environment:
 ```bash
 source ~/venv/bin/activate
 ```
 2. Install Dependencies:
-        2.1. Navigate to the `backend/`` directory where your requirements.txt file is located.
+- Navigate to the `backend/`` directory where your requirements.txt file is located.
 ```bash
 cd backend/
 ```
-        2.2. Run the following command:
+- Run the following command:
 ```bash
 cd backend/
 pip install -r requirements.txt
