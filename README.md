@@ -116,10 +116,36 @@ curl -X POST http://localhost:5000/generate-sheet
 
 ## Delete the environment we deployed
 
+### Delete the docker environment
 ```bash
 docker system prune -a
 ```
+### Delete the generated Sheets by the clients
 
+1. Create and Activate a Virtual Environment (if not already done):
+1.1. Create a virtual environment:
+```bash
+python3 -m venv ~/venv
+```
+1.2. Activate the virtual environment:
+```bash
+source ~/venv/bin/activate
+```
+2. Install Dependencies:
+2.1. Navigate to the `backend/`` directory where your requirements.txt file is located.
+```bash
+cd backend/
+```
+2.2. Run the following command:
+```bash
+cd backend/
+pip install -r requirements.txt
+```
+3. Run the Cleanup Script:
+```bash
+cd 
+python3 app/cleanup_sheets_from_api.py
+```
 ## Contributing
 Contributions are welcome! Please read the contributing guidelines before getting started.
 
