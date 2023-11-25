@@ -3,18 +3,22 @@
 This project provides a web application to generate work attendance sheets as Google Sheets for each user in their own Google Drive. The application is split into a frontend and backend, each running in its own Docker container.
 
 ## Table of Contents
-
-## Table of Contents
-
 1. [Technologies Used](#technologies-used)
 2. [File Structure](#file-structure)
 3. [Setup Instructions](#setup-instructions)
-4. [Usage Instructions](#usage-instructions)
-    - [Test Backend Endpoint Manually](#test-backend-endpoint-manually)
-    - [Delete Deployed Environment](#delete-deployed-environment)
-5. [Nginx and SSL Configuration](#nginx-and-ssl-configuration)
-6. [Contributing](#contributing)
-7. [License](#license)
+    3.1. [Clone the repository](#clone-the-repository)
+4. [Nginx and SSL Configuration](#nginx-and-ssl-configuration)
+    4.1. [Generate SSL certificate](#generate-ssl-certificate-into-nginxcerts-directory)
+    4.2. [Add GCP Credentials](#add-gcp-credentials)
+    4.3. [Build and Run Docker Containers](#build-and-run-docker-containers)
+5. [Usage Instructions](#usage-instructions)
+6. [To Test Backend Endpoint Manually](#to-test-backend-endpoint-manually)
+7. [Delete the Environment](#delete-the-environment-we-deployed)
+    7.1. [Delete Docker Environment](#delete-the-docker-environment)
+    7.2. [Delete Generated Sheets](#delete-the-generated-sheets-by-the-clients)
+8. [Contributing](#contributing)
+9. [License](#license)
+
 
 ## Technologies Used
 - Backend: Flask
@@ -74,7 +78,7 @@ cd google-sheet-generator
 ```
 
 ## Nginx and SSL Configuration
-### Generate SSL certyificate into `nginx/certs/` directory
+### Generate SSL certiificate into `nginx/certs/` directory
 
 1. Run the following command to generate a 2048-bit RSA private key, which is used to decrypt traffic:
 
